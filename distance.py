@@ -39,7 +39,7 @@ def getShortestDist(vLat,vLong):
     # Create list of dictionaries containing name, latitude, longitude, and distance
     nearest_police_stations_list = []
     for _, row in sorted_police_stations.iterrows():
-        police_station = {
+        police_station = { #also mention phone number
             'name': row['name'],
             'latitude': row['latitude'],
             'longitude': row['longitude'],
@@ -54,9 +54,10 @@ def getShortestDist(vLat,vLong):
     return victim_lat, victim_lon, nearest_police_stations_list
 
 if __name__=="__main__":
-    vlan,vlon,npsl = getShortestDist(17.3,78.5)
+    vlan,vlon,npsl = getShortestDist(17.3,78.5) #current victim location --> dynamic
     #dict = {ps1 : [lon, lat]}
     dic = {}
     for i in npsl:
         dic[i['name']]=[i['latitude'],i['longitude']]
-    maps.show_map(17.3,78.5,dic)
+    maps.show_map(17.3,78.5,dic) 
+    #include call for twilio 
